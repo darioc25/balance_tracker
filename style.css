@@ -1,0 +1,15 @@
+:root{
+    --main-color: #4361EE;
+    --main-darker-color: #3F37C9;
+    --custom-white: #F8F9FA;
+    --custom-black: #212529;
+    --custom-green: #06d6a0;
+    --custom-yellow: #ffd166;
+    --custom-red: #ef476f;
+    --custom-font: "Poppins", sans-serif;
+}
+
+*{
+    font-family: var(--custom-font);
+    color: var(--custom-black);
+}
