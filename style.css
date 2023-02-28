@@ -26,7 +26,7 @@ main{
 
 .custom-navbar{
     margin: 0px;
-    height: 90px;
+    height: 70px;
     background-color: var(--main-darker-color);
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@ main{
 }
 
 .nav-logo{
-    font-size: 46px;
+    font-size: 38px;
     margin: 0px 18px 0px 0px;
 }
 
@@ -82,34 +82,86 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 28px;
     color: var(--custom-black);
     width: 42px;
     height: 42px;
     background-color: var(--custom-white);
-    border-radius: 50%;
+}
+
+.active-user-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .active-user-name{
     font-size: 18px;
     font-weight: 400;
     color: white;
+    margin: 0px;
+}
+
+.active-user-logout{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px;
+    transition: 0.2s;
+}
+
+.active-user-logout:hover{
+    color: var(--custom-red);
+    cursor: pointer;
 }
 
 /* Sidebar */
 .custom-sidebar{
     position: absolute;
-    top: 90px;
+    top: 70px;
     bottom: 0px;
     width: 300px;
+    padding-top: 18px;
     background-color: var(--main-color);
+}
+
+.sidebar-item-container{
+    padding: 12px 0px 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: 0.2s;
+}
+
+.sidebar-item-container:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid white;
+}
+
+.custom-sidebar-item{
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 /* Main Content */
 .main-content{
     position: absolute;
     background-color: var(--custom-white);
-    top: 90px;
+    /* background-color: white; */
+    top: 70px;
     bottom: 0px;
     left: 300px;
     right: 0px;
@@ -137,6 +189,36 @@ main{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* JavaScript classes */
 .no-render{
     display: none;
 }
