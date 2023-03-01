@@ -16,42 +16,74 @@
     </head>
     <body>
 
-        <main>
-            <!-- Navbar -->
-            <nav class="custom-navbar">
-                <div class="input-wrap">
-                    <h1 class="main-title"><i class="fa-solid fa-scale-unbalanced nav-logo"></i>Balance Tracker</h1>
-                    <input type="text" class="searchbar" placeholder="Search...">
+        <!-- Navbar -->
+        <div class="custom-navbar">
+            <div class="input-wrap">
+                <h1 class="main-title"><i class="fa-solid fa-scale-unbalanced nav-logo"></i>Balance Tracker</h1>
+                <input type="text" class="searchbar" placeholder="Search...">
+            </div>
+            <div class="active-user">
+                <span class="active-user-icon"><i class="fa-solid fa-snowflake"></i></span>
+                <div class="active-user-wrap">
+                    <h3 class="active-user-name">Jonh Smith</h3>
+                    <button class="active-user-logout">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
-                <div class="active-user">
-                    <span class="active-user-icon"><i class="fa-solid fa-snowflake"></i></span>
-                    <div class="active-user-wrap">
-                        <h3 class="active-user-name">Jonh Smith</h3>
-                        <button class="active-user-logout">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="custom-sidebar">
+            <!-- User profile -->
+            <div class="user-profile sidebar-item-container">
+                <h3 class="custom-sidebar-item"><i class="fa-solid fa-address-card"></i>Profile</h3>
+            </div>
+            <!-- New user -->
+            <div class="new-user sidebar-item-container">
+                <h3 class="custom-sidebar-item"><i class="fa-solid fa-user-plus"></i>Add User</h3>
+            </div>
+            <!-- Users list -->
+            <div class="users-list sidebar-item-container">
+                <h3 class="custom-sidebar-item"><i class="fa-solid fa-users"></i>Users List</h3>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Add User Module -->
+            <div class="add-user-module-container no-render">
+                <div class="add-user-module">
+                    <div class="add-user-module-form">
+                        <label for="first-name">First Name:</label>
+                        <input type="text" id="first-name" class="user-firstname">
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" class="user-lastname">
                     </div>
+                    <div class="icon-list">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                        <i class="fa-solid fa-user-tie"></i>
+                        <i class="fa-solid fa-cat"></i>
+                        <i class="fa-solid fa-dog"></i>
+                        <i class="fa-solid fa-otter"></i>
+                        <i class="fa-solid fa-fish-fins"></i>
+                        <i class="fa-solid fa-snowflake"></i>
+                        <i class="fa-solid fa-motorcycle"></i>
+                        <i class="fa-solid fa-robot"></i>
+                        <i class="fa-solid fa-bomb"></i>
+                        <i class="fa-solid fa-skull"></i>
+                        <i class="fa-solid fa-mosquito"></i>
+                        <i class="fa-solid fa-meteor"></i>
+                        <i class="fa-solid fa-hamsa"></i>
+                        <i class="fa-solid fa-candy-cane"></i>
+                        <i class="fa-regular fa-face-grin-wink"></i>
+                        <i class="fa-solid fa-seedling"></i>
+                        <i class="fa-solid fa-shrimp"></i>
+                    </div>
+                    <button class="add-user-btn">Add User</button>
                 </div>
-            </nav>
-            <!-- Sidebar -->
-            <section class="custom-sidebar">
-                <!-- User profile -->
-                <div class="user-profile sidebar-item-container">
-                    <h3 class="custom-sidebar-item"><i class="fa-solid fa-address-card"></i>Profile</h3>
-                </div>
-                <!-- New user -->
-                <div class="new-user sidebar-item-container">
-                    <h3 class="custom-sidebar-item"><i class="fa-solid fa-user-plus"></i>Add User</h3>
-                </div>
-                <!-- Users list -->
-                <div class="users-list sidebar-item-container">
-                    <h3 class="custom-sidebar-item"><i class="fa-solid fa-users"></i>Users List</h3>
-                </div>
-            </section>
-            <!-- Main Content -->
-            <section class="main-content">
-                <h1>Main content here...</h1>
-            </section>
-        </main>
-        <footer></footer>
+            </div>
+
+        </div>
 
         <!-- Custom Script -->
         <script src="script.js"></script>

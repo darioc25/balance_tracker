@@ -1,7 +1,7 @@
 :root{
     --main-color: #822faf;
     --main-darker-color: #6d23b6;
-    --custom-white: #F8F9FA;
+    --custom-white: #E9ECEF;
     --custom-black: #212529;
     --custom-green: #06d6a0;
     --custom-yellow: #ffd166;
@@ -11,22 +11,24 @@
 
 *{
     font-family: var(--custom-font);
+    box-sizing: border-box;
 }
 
+/* Min-Resolution 1280x720 */
 body{
-    min-width: 1200px;
-    margin: 0px;
-    background-color: antiquewhite;
     height: 100vh;
+    min-width: 1280px !important;
+    min-height: 720px !important;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background-color: antiquewhite;
 }
 
-main{
-    height: 100%;
-}
-
+/* Navbar */
 .custom-navbar{
     margin: 0px;
-    height: 70px;
+    height: 80px;
     background-color: var(--main-darker-color);
     display: flex;
     align-items: center;
@@ -62,7 +64,6 @@ main{
     height: 30px;
     font-size: 16px;
     font-weight: 500;
-    background-color: var(--custom-white);
     transition: 0.3s;
 }
 
@@ -86,7 +87,8 @@ main{
     color: var(--custom-black);
     width: 42px;
     height: 42px;
-    background-color: var(--custom-white);
+    background-color: white;
+    border-radius: 5px;
 }
 
 .active-user-wrap{
@@ -125,7 +127,7 @@ main{
 /* Sidebar */
 .custom-sidebar{
     position: absolute;
-    top: 70px;
+    top: 80px;
     bottom: 0px;
     width: 300px;
     padding-top: 18px;
@@ -133,7 +135,7 @@ main{
 }
 
 .sidebar-item-container{
-    padding: 12px 0px 12px 32px;
+    padding: 16px 0px 16px 32px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -160,31 +162,93 @@ main{
 .main-content{
     position: absolute;
     background-color: var(--custom-white);
-    /* background-color: white; */
-    top: 70px;
+    top: 80px;
     bottom: 0px;
     left: 300px;
     right: 0px;
-    min-width: 900px;
+}
+
+/* Add User Module */
+.add-user-module-container{
+    height: 100%;
+    width: 100%;
+    opacity: 0%;
+    transition: 0.6s all;
+}
+
+.add-user-module{
+    height: 100%;
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.add-user-module-form{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.main-content h1{
-    font-size: 42px;
-    color: var(--custom-black);
-    opacity: 40%;
+.user-firstname, .user-lastname{
+    border: none;
+    padding: 5px 10px;
+    transition: 0.3s;
+    width: 260px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
+.user-firstname:focus, .user-lastname:focus{
+    outline: none;
+    transform: scale(1.1);
+}
 
+.icon-list{
+    background-color: white;
+    width: 300px;
+    padding: 6px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 6px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+}
 
+.icon-list i{
+    font-size: 36px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 6px 0px;
+    transition: 0.2s;
+}
 
+.icon-list i:hover{
+    cursor: pointer;
+    transform: scale(0.9);
+    background-color: var(--main-darker-color);
+    color: white;
+}
 
+.add-user-btn{
+    border: none;
+    background-color: #06d6a0;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
 
-
-
-
+.add-user-btn:hover{
+    cursor: pointer;
+    transform: scale(0.9);
+}
 
 
 
