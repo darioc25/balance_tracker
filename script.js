@@ -1,14 +1,19 @@
 const activeUserInfo = document.querySelector(".active-user");
 
+// Navbar Element
+const searchBar = document.querySelector(".searchbar");
+
 // Sidebar Buttons
 const newUser = document.querySelector(".new-user");
 const usersList = document.querySelector(".users-list");
+const sideBarItems = document.querySelectorAll(".sidebar-item-container");
 
 // Add User Input
 const userFirstnameInput = document.querySelector(".user-firstname-input");
 const userLastnameInput = document.querySelector(".user-lastname-input");
 const iconsList = document.querySelectorAll(".custom-user-icon");
 const addUserBtn = document.querySelector(".add-user-btn");
+
 // Add User Preview
 const userIconPreview = document.querySelector(".user-icon-preview");
 const userFirstnamePreview = document.querySelector(".user-firstname-preview");
@@ -33,6 +38,9 @@ let selectedColor  = "";
 const renderModule = function(moduleName) {
     moduleName.classList.remove("no-render");
     setTimeout(() => moduleName.style.opacity = 100, 100);
+    if(moduleName == moduleList[1]) {
+        searchBar.classList.remove("no-render");
+    }
 };
 
 const noRenderModule = function(moduleName) {
@@ -42,6 +50,9 @@ const noRenderModule = function(moduleName) {
             moduleList[i].style.opacity = 0;
         }
     };
+    if(moduleName != moduleList[1]) {
+        searchBar.classList.add("no-render");
+    }
 };
 
 const iconSelection = function() {
@@ -76,6 +87,55 @@ const userKeyGenerator = function() {
     return key;
 };
 
+const updateUsersList = function(usersList) {
+    listElement.innerHTML = `
+        <tr>
+            <th>Icon</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Account Creation</th>
+            <th>Action</th>
+        </tr>
+    `;
+    usersList.forEach(user => {
+        const userRow = document.createElement("tr");
+        userRow.innerHTML = `
+            <td class="users-list-icon-container">${user.userSetting.icon}</td>
+            <td class="users-list-item-data">${user.firstName}</td>
+            <td class="users-list-item-data">${user.lastName}</td>
+            <td class="users-list-item-data">${user.userCreationData}</td>
+            <td><button class="users-list-item-button">Login</button></td>
+        `;
+        listElement.appendChild(userRow);
+        userRow.querySelector(".users-list-icon-container").querySelector("i").classList.add("users-list-item-icon");
+        userRow.querySelector(".users-list-icon-container").querySelector("i").classList.add(`${user.userSetting.color}`);
+        userRow.querySelector(".users-list-item-button").addEventListener("click", () => {
+            userInSession = user;
+            activeUserInfo.innerHTML = `
+                <span class="active-user-icon">${userInSession.userSetting.icon}</span>
+                <div class="active-user-wrap">
+                    <h3 class="active-user-name">${userInSession.firstName} ${userInSession.lastName}</h3>
+                    <button class="active-user-logout">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+            `;
+            document.querySelector(".active-user-logout").addEventListener("click", () => {
+                userInSession = undefined;
+                activeUserInfo.innerHTML = '<h3 class="no-user-active"><i class="fa-solid fa-circle-user no-user-active-icon"></i>Not logged in</h3>';
+            });
+        });
+    });
+};
+
+const sideBarSelectedItems = function(itemName) {
+    sideBarItems.forEach(item => {
+        const classListArr = [...item.classList];
+        item.children[1]?.remove();
+        if(classListArr.includes(itemName)) {
+            item.innerHTML += '<span class="sidebar-item-selected"></span>';
+        };
+    });
+};
+
 // Event
 userFirstnameInput.addEventListener("input", () => {
     userFirstnamePreview.textContent = userFirstnameInput.value;
@@ -83,6 +143,18 @@ userFirstnameInput.addEventListener("input", () => {
 
 userLastnameInput.addEventListener("input", () => {
     userLastnamePreview.textContent = userLastnameInput.value;
+});
+
+// Searching users with searchbar
+searchBar.addEventListener("input", () => {
+    const usersLocalStorage = [];
+    for(user of Object.values(localStorage)) {
+        usersLocalStorage.push(JSON.parse(user));
+    };
+    let filteredUser = usersLocalStorage.filter(user => {
+        return `${user.firstName} ${user.lastName}`.toLowerCase().includes(searchBar.value.toLowerCase());
+    });
+    updateUsersList(filteredUser);
 });
 
 addUserBtn.addEventListener("click", () => {
@@ -129,35 +201,16 @@ addUserBtn.addEventListener("click", () => {
 newUser.addEventListener("click", () => {
     renderModule(addUserModuleContainer);
     noRenderModule(addUserModuleContainer);
+    sideBarSelectedItems("new-user");
 });
 
 usersList.addEventListener("click", () => {
     renderModule(usersListModuleContainer);
     noRenderModule(usersListModuleContainer);
+    sideBarSelectedItems("users-list");
     const usersLocalStorage = [];
     for(user of Object.values(localStorage)) {
         usersLocalStorage.push(JSON.parse(user));
     };
-    listElement.innerHTML = `
-        <tr>
-            <th>Icon</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Account Creation</th>
-            <th>Action</th>
-        </tr>
-    `;
-    usersLocalStorage.forEach(user => {
-        const userRow = document.createElement("tr");
-        userRow.innerHTML = `
-            <td class="users-list-icon-container">${user.userSetting.icon}</td>
-            <td class="users-list-item-data">${user.firstName}</td>
-            <td class="users-list-item-data">${user.lastName}</td>
-            <td class="users-list-item-data">${user.userCreationData}</td>
-            <td><button class="users-list-item-button">Login</button></td>
-        `;
-        listElement.appendChild(userRow);
-        userRow.querySelector(".users-list-icon-container").querySelector("i").classList.add("users-list-item-icon");
-        userRow.querySelector(".users-list-icon-container").querySelector("i").classList.add(`${user.userSetting.color}`);
-    });
+    updateUsersList(usersLocalStorage);
 });

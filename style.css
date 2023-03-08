@@ -124,6 +124,20 @@ body{
     cursor: pointer;
 }
 
+.no-user-active{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.no-user-active-icon{
+    font-size: 28px;
+    margin: 0px 12px 0px 0px;
+}
+
 /* Sidebar */
 .custom-sidebar{
     position: absolute;
@@ -135,6 +149,7 @@ body{
 }
 
 .sidebar-item-container{
+    position: relative;
     padding: 16px 0px 16px 32px;
     display: flex;
     align-items: center;
@@ -156,6 +171,16 @@ body{
     margin: 0px;
     font-size: 16px;
     font-weight: 500;
+}
+
+.sidebar-item-selected{
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: var(--custom-green);
+    right: 24px;
 }
 
 /* Main Content */
