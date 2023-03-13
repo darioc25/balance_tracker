@@ -183,6 +183,18 @@ body{
     right: 24px;
 }
 
+.custom-sidebar-item-icon{
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    height: 32px;
+    width: 32px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
 /* Main Content */
 .main-content{
     position: absolute;
@@ -207,7 +219,6 @@ body{
 
 .add-user-module{
     height: 100%;
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -252,12 +263,11 @@ body{
     text-align: center;
     border-radius: 5px;
     padding: 6px 0px;
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .custom-user-icon:hover{
     cursor: pointer;
-    transform: scale(0.9);
     background-color: var(--main-color);
     color: white;
 }
@@ -385,6 +395,27 @@ body{
     background-color: #758bfd;
 }
 
+.add-user-submited-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 32px 64px;
+}
+
+.add-user-submited-form i{
+    font-size: 128px;
+    color: var(--custom-green);
+    margin-bottom: 16px;
+}
+
+.add-user-submited-form h3{
+    font-size: 24px;
+    margin: 0px;
+}
+
 /* Users List Module */
 .users-list-module-container{
     height: 100%;
@@ -402,6 +433,7 @@ body{
     border-radius: 5px;
     background-color: white;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 90%;
     padding: 24px 12px;
 }
@@ -416,6 +448,17 @@ body{
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     width: 100%;
     padding: 8px 4px;
+}
+
+.users-list-row{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 8px 4px;
+    transition: 0.1s;
+}
+
+.users-list-row:hover{
+    background-color: var(--custom-white);
 }
 
 .users-list-table th, .users-list-table td{
@@ -459,6 +502,19 @@ body{
     cursor: pointer;
     transform: scale(0.9);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* JavaScript classes */
