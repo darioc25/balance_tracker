@@ -1,3 +1,4 @@
+// User Logged Info Element
 const activeUserInfo = document.querySelector(".active-user");
 
 // Navbar Element
@@ -9,14 +10,15 @@ const userProfile = document.querySelector(".user-profile");
 const movementsPage = document.querySelector(".movements-page");
 const newUser = document.querySelector(".new-user");
 const usersList = document.querySelector(".users-list");
+const appSetting = document.querySelector(".app-setting");
 
-// Add User Input
+// Add User Module Input Element
 const userFirstnameInput = document.querySelector(".user-firstname-input");
 const userLastnameInput = document.querySelector(".user-lastname-input");
 const iconsList = document.querySelectorAll(".custom-user-icon");
 const addUserBtn = document.querySelector(".add-user-btn");
 
-// Add User Preview
+// Add User Module Preview
 const userIconPreview = document.querySelector(".user-icon-preview");
 const userFirstnamePreview = document.querySelector(".user-firstname-preview");
 const userLastnamePreview = document.querySelector(".user-lastname-preview");
@@ -24,15 +26,18 @@ const colorsList = document.querySelectorAll(".user-logo-color");
 
 // Module Container
 const userProfileModuleContainer = document.querySelector(".user-profile-module-container");
+const movementsPageModuleContainer = document.querySelector(".movements-page-module-container");
 const addUserModuleContainer = document.querySelector(".add-user-module-container");
 const usersListModuleContainer = document.querySelector(".users-list-module-container");
+const appSettingModuleContainer = document.querySelector(".app-setting-module-container");
 
 // Module Element
 const addUserModuleElement = document.querySelector(".add-user-module");
 const addUserModulePreviewElement = document.querySelector(".add-user-preview");
 const addUserModuleSubmitedElement = document.querySelector(".add-user-submited-form");
 
-const moduleList = [userProfileModuleContainer, addUserModuleContainer, usersListModuleContainer];
+// Module List Array
+const moduleList = [userProfileModuleContainer, movementsPageModuleContainer, addUserModuleContainer, usersListModuleContainer, appSettingModuleContainer];
 
 // List Element
 const listElement = document.querySelector(".users-list-table");
@@ -46,7 +51,7 @@ let selectedColor  = "";
 const renderModule = function(moduleName) {
     moduleName.classList.remove("no-render");
     setTimeout(() => moduleName.style.opacity = 100, 100);
-    if(moduleName == moduleList[2]) {
+    if(moduleName == moduleList[3]) {
         searchBar.classList.remove("no-render");
     }
 };
@@ -58,7 +63,7 @@ const noRenderModule = function(moduleName) {
             moduleList[i].style.opacity = 0;
         }
     };
-    if(moduleName != moduleList[2]) {
+    if(moduleName != moduleList[3]) {
         searchBar.classList.add("no-render");
     }
 };
@@ -72,8 +77,6 @@ const iconSelection = function() {
     };
 };
 
-iconSelection();
-
 const colorSelection = function() {
     for(let i = 0; i < colorsList.length; i++) {
         colorsList[i].addEventListener("click", () => {
@@ -84,7 +87,10 @@ const colorSelection = function() {
     }
 };
 
-colorSelection();
+window.addEventListener("load", () => {
+    iconSelection();
+    colorSelection();
+});
 
 const userKeyGenerator = function() {
     const charList = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -134,6 +140,9 @@ const updateUsersList = function(usersArr) {
             newUser.classList.add("no-render");
             userProfile.classList.remove("no-render");
             movementsPage.classList.remove("no-render");
+            sideBarSelectedItems("movements-page");
+            renderModule(movementsPageModuleContainer);
+            noRenderModule(movementsPageModuleContainer);
             // Logout User Button
             document.querySelector(".active-user-logout").addEventListener("click", () => {
                 userInSession = undefined;
@@ -142,8 +151,9 @@ const updateUsersList = function(usersArr) {
                 newUser.classList.remove("no-render");
                 userProfile.classList.add("no-render");
                 movementsPage.classList.add("no-render");
-                renderModule(moduleList[2]);
-                noRenderModule(moduleList[2]);
+                renderModule(moduleList[3]);
+                noRenderModule(moduleList[3]);
+                sideBarSelectedItems("users-list");
             });
         });
     });
@@ -235,6 +245,12 @@ userProfile.addEventListener("click", () => {
     sideBarSelectedItems("user-profile");
 });
 
+movementsPage.addEventListener("click", () => {
+    renderModule(movementsPageModuleContainer);
+    noRenderModule(movementsPageModuleContainer);
+    sideBarSelectedItems("movements-page");
+});
+
 newUser.addEventListener("click", () => {
     renderModule(addUserModuleContainer);
     noRenderModule(addUserModuleContainer);
@@ -250,4 +266,10 @@ usersList.addEventListener("click", () => {
         usersLocalStorage.push(JSON.parse(user));
     };
     updateUsersList(usersLocalStorage);
+});
+
+appSetting.addEventListener("click", () => {
+    renderModule(appSettingModuleContainer);
+    noRenderModule(appSettingModuleContainer)
+    sideBarSelectedItems("app-setting");
 });

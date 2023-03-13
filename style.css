@@ -25,7 +25,9 @@ body{
     background-color: antiquewhite;
 }
 
+/* ############################## */
 /* Navbar */
+/* ############################## */
 .custom-navbar{
     margin: 0px;
     height: 80px;
@@ -138,7 +140,9 @@ body{
     margin: 0px 12px 0px 0px;
 }
 
+/* ############################## */
 /* Sidebar */
+/* ############################## */
 .custom-sidebar{
     position: absolute;
     top: 80px;
@@ -195,7 +199,9 @@ body{
     border-radius: 5px;
 }
 
+/* ############################## */
 /* Main Content */
+/* ############################## */
 .main-content{
     position: absolute;
     background-color: var(--custom-white);
@@ -205,7 +211,35 @@ body{
     right: 0px;
 }
 
+/* ############################## */
+/* User Profile Module */
+/* ############################## */
+.user-profile-module-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0%;
+    transition: 0.6s all;
+}
+
+/* ############################## */
+/* Movements Page Module */
+/* ############################## */
+.movements-page-module-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0%;
+    transition: 0.6s all;
+}
+
+/* ############################## */
 /* Add User Module */
+/* ############################## */
 .add-user-module-container{
     height: 100%;
     width: 100%;
@@ -416,7 +450,9 @@ body{
     margin: 0px;
 }
 
+/* ############################## */
 /* Users List Module */
+/* ############################## */
 .users-list-module-container{
     height: 100%;
     width: 100%;
@@ -503,6 +539,18 @@ body{
     transform: scale(0.9);
 }
 
+/* ############################## */
+/* App Setting Module */
+/* ############################## */
+.app-setting-module-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0%;
+    transition: 0.6s all;
+}
 
 
 
@@ -515,9 +563,9 @@ body{
 
 
 
-
-
+/* ############################## */
 /* JavaScript classes */
+/* ############################## */
 .no-render{
     display: none;
 }
